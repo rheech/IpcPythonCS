@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpcPythonCS.UI", "IpcPythonCS.UI\IpcPythonCS.UI.csproj", "{00D341FC-4DD6-49CA-BC0F-4195702AF2E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpcPythonCS.Engine.CSharp", "IpcPythonCS.Engine\IpcPythonCS.Engine.CSharp.csproj", "{1E3EEA90-0546-44C3-9513-799999592B77}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01_UI", "01_UI", "{B9B6B724-BE62-4E52-892C-3C91BA901A14}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02_Engine", "02_Engine", "{9BD0A1DE-6D12-4AC1-BC49-D09969DEA47B}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "IpcPythonCS.Engine.Python", "IpcPythonCS.Engine.Python\IpcPythonCS.Engine.Python.pyproj", "{26D0B153-6D3C-43C6-87B9-F582C06FED97}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00D341FC-4DD6-49CA-BC0F-4195702AF2E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00D341FC-4DD6-49CA-BC0F-4195702AF2E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00D341FC-4DD6-49CA-BC0F-4195702AF2E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00D341FC-4DD6-49CA-BC0F-4195702AF2E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E3EEA90-0546-44C3-9513-799999592B77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E3EEA90-0546-44C3-9513-799999592B77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E3EEA90-0546-44C3-9513-799999592B77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E3EEA90-0546-44C3-9513-799999592B77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26D0B153-6D3C-43C6-87B9-F582C06FED97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26D0B153-6D3C-43C6-87B9-F582C06FED97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{00D341FC-4DD6-49CA-BC0F-4195702AF2E7} = {B9B6B724-BE62-4E52-892C-3C91BA901A14}
+		{1E3EEA90-0546-44C3-9513-799999592B77} = {9BD0A1DE-6D12-4AC1-BC49-D09969DEA47B}
+		{26D0B153-6D3C-43C6-87B9-F582C06FED97} = {9BD0A1DE-6D12-4AC1-BC49-D09969DEA47B}
+	EndGlobalSection
+EndGlobal
