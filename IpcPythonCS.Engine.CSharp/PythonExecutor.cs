@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using IpcPythonCS.Engine.CSharp.Communication;
 
-namespace IpcPythonCS.Engine
+namespace IpcPythonCS.Engine.CSharp
 {
     public class PythonExecutor
     {

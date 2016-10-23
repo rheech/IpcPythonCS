@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpcPythonCS.UI", "IpcPythonCS.UI\IpcPythonCS.UI.csproj", "{00D341FC-4DD6-49CA-BC0F-4195702AF2E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpcPythonCS.Engine.CSharp", "IpcPythonCS.Engine\IpcPythonCS.Engine.CSharp.csproj", "{1E3EEA90-0546-44C3-9513-799999592B77}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpcPythonCS.Engine.CSharp", "IpcPythonCS.Engine.CSharp\IpcPythonCS.Engine.CSharp.csproj", "{1E3EEA90-0546-44C3-9513-799999592B77}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01_UI", "01_UI", "{B9B6B724-BE62-4E52-892C-3C91BA901A14}"
 EndProject

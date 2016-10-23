@@ -78,7 +78,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IpcPythonCS.Engine\IpcPythonCS.Engine.CSharp.csproj">
+    <ProjectReference Include="..\IpcPythonCS.Engine.CSharp\IpcPythonCS.Engine.CSharp.csproj">
       <Project>{1e3eea90-0546-44c3-9513-799999592b77}</Project>
       <Name>IpcPythonCS.Engine.CSharp</Name>
     </ProjectReference>
