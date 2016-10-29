@@ -21,6 +21,14 @@ namespace IpcPythonCS.Engine.CSharp.RPC
             _communicator = communicator;
         }
 
+        public ICommunicator Communicator
+        {
+            get
+            {
+                return _communicator;
+            }
+        }
+
         protected T CallPythonFunction<T>(params object[] args)
         {
             StackTrace stackTrace = new StackTrace();

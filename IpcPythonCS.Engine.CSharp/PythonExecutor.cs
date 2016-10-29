@@ -15,18 +15,23 @@ namespace IpcPythonCS.Engine.CSharp
     /// </summary>
     public class PythonExecutor
     {
-        private string _pythonPath = @"C:\Program Files\Python35\Python.exe";
+        private const string DEFAULT_PYTHON_PATH = @"C:\Program Files\Python35\Python.exe";
+        private const string DEFAULT_SCRIPT_PATH = @"..\..\..\IpcPythonCS.Engine.Python";
+        private FileInfo _pythonInterpreter;
+        private DirectoryInfo _scriptPath;
         private Thread _thread = null;
         private StringBuilder _sbOutput;
 
         public PythonExecutor()
         {
-            
+            _pythonInterpreter = new FileInfo(DEFAULT_PYTHON_PATH);
+            _scriptPath = new DirectoryInfo(DEFAULT_SCRIPT_PATH);
         }
 
-        public PythonExecutor(string pythonPath)
+        public PythonExecutor(string pythonPath, string scriptPath)
         {
-            _pythonPath = pythonPath;
+            _pythonInterpreter = new FileInfo(pythonPath);
+            _scriptPath = new DirectoryInfo(scriptPath);
         }
 
         /// <summary>
@@ -42,7 +47,7 @@ namespace IpcPythonCS.Engine.CSharp
             string output;
 
             // Hide console window
-            startInfo = new ProcessStartInfo(_pythonPath, arg)
+            startInfo = new ProcessStartInfo(_pythonInterpreter.FullName, arg)
             {
                 WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal,
                 UseShellExecute = false,
@@ -109,7 +114,12 @@ namespace IpcPythonCS.Engine.CSharp
         /// <returns>Console output</returns>
         public string RunScriptReturn(string script, params string[] args)
         {
-            FileInfo file = new FileInfo(script);
+            FileInfo file = new FileInfo(String.Format("{0}\\{1}", _scriptPath.FullName, script));
+
+            if (!file.Exists)
+            {
+                throw new FileNotFoundException(String.Format("{0} does not exist.", file.FullName));
+            }
             
             return _runPythonInternal(String.Format("\"{0}\" {1}", file.FullName, CreateParameter(args)).Trim());
         }
@@ -121,7 +131,12 @@ namespace IpcPythonCS.Engine.CSharp
         /// <param name="args">Console output</param>
         public void RunScript(string script, params string[] args)
         {
-            FileInfo file = new FileInfo(script);
+            FileInfo file = new FileInfo(String.Format("{0}\\{1}", _scriptPath.FullName, script));
+
+            if (!file.Exists)
+            {
+                throw new FileNotFoundException(String.Format("{0} does not exist.", file.FullName));
+            }
             
             RunPyton(String.Format("\"{0}\" {1}", file.FullName, CreateParameter(args)).Trim());
         }
