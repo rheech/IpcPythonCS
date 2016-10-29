@@ -1,5 +1,6 @@
-from Communication.ICommunicator import ICommunicator
-from RPC.RPCWrapper import RPCWrapper
+from IpcPythonCS.RPC.RPCWrapper import RPCWrapper
+from IpcPythonCS.Communication.ICommunicator import ICommunicator
+
 
 class PyCalculator(RPCWrapper):
     _communicator = ICommunicator

@@ -1,5 +1,5 @@
 import xml.etree.ElementTree as ET
-from Communication.ICommunicator import ICommunicator
+
 
 class RPCWrapper:
     _communicator = None

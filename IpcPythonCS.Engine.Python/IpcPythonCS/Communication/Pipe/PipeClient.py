@@ -1,5 +1,7 @@
-import win32pipe, win32file
-from Communication.ICommunicator import ICommunicator
+import win32file
+
+from IpcPythonCS.Communication.ICommunicator import ICommunicator
+
 
 class PipeClient(ICommunicator):
     _pipeName = None

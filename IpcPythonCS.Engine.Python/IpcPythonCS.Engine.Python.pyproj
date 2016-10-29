@@ -35,6 +35,10 @@
     <Folder Include="Communication\" />
     <Folder Include="Communication\Pipe\" />
     <Folder Include="Example\" />
+    <Folder Include="IpcPythonCS\" />
+    <Folder Include="IpcPythonCS\Communication\" />
+    <Folder Include="IpcPythonCS\Communication\Pipe\" />
+    <Folder Include="IpcPythonCS\RPC\" />
     <Folder Include="RPC\" />
   </ItemGroup>
   <Import Condition="Exists($(PtvsTargetsFile))" Project="$(PtvsTargetsFile)" />

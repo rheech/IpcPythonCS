@@ -1,5 +1,8 @@
-import win32pipe, win32file
-from Communication.ICommunicator import ICommunicator
+import win32file
+import win32pipe
+
+from IpcPythonCS.Communication.ICommunicator import ICommunicator
+
 
 # http://stackoverflow.com/questions/13319679/createnamedpipe-in-python
 class PipeServer(ICommunicator):

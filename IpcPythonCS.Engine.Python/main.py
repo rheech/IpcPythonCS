@@ -1,6 +1,5 @@
-from Communication.Pipe.PipeClient import PipeClient
-from Communication.Pipe.PipeServer import PipeServer
 from Example.PyCalculator import PyCalculator
+from IpcPythonCS.Communication.Pipe.PipeServer import PipeServer
 
 server = PipeServer()
 server.WaitForConnection("calculator")

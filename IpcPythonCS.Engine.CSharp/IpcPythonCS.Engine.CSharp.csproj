@@ -48,6 +48,7 @@
     <Compile Include="PythonExecutor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RPC\RPCWrapper.cs" />
+    <Compile Include="ExceptionHandler\PythonExecutionException.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

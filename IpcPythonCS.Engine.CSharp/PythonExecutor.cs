@@ -7,6 +7,7 @@ using System.Diagnostics;
 using IpcPythonCS.Engine.CSharp.Communication;
 using System.IO;
 using System.Threading;
+using IpcPythonCS.Engine.ExceptionHandler;
 
 namespace IpcPythonCS.Engine.CSharp
 {
@@ -21,6 +22,10 @@ namespace IpcPythonCS.Engine.CSharp
         private DirectoryInfo _scriptPath;
         private Thread _thread = null;
         private StringBuilder _sbOutput;
+
+        public delegate void PythonAppMessageEvent(string output);
+        public event PythonAppMessageEvent OnPythonClosed;
+        public event PythonAppMessageEvent OnPythonError;
 
         public PythonExecutor()
         {
@@ -43,13 +48,13 @@ namespace IpcPythonCS.Engine.CSharp
         {
             ProcessStartInfo startInfo;
             Process proc;
-            StreamReader sr;
+            StreamReader sr, stderr;
             string output;
 
             // Hide console window
             startInfo = new ProcessStartInfo(_pythonInterpreter.FullName, arg)
             {
-                WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal,
+                WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden,
                 UseShellExecute = false,
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
@@ -62,7 +67,8 @@ namespace IpcPythonCS.Engine.CSharp
             proc = Process.Start(startInfo);
 
             sr = proc.StandardOutput;
-
+            stderr = proc.StandardError;
+            
             do
             {
                 output = sr.ReadLine();
@@ -74,7 +80,27 @@ namespace IpcPythonCS.Engine.CSharp
             proc.WaitForExit();
             proc.Close();
 
-            return output;
+            if (stderr.Peek() != -1)
+            {
+                PythonErrorMessage(stderr.ReadToEnd());
+            }
+
+            if (OnPythonClosed != null)
+            {
+                OnPythonClosed(_sbOutput.ToString());
+            }
+
+            return _sbOutput.ToString();
+        }
+
+        public void PythonErrorMessage(string errorMessage)
+        {
+            throw new PythonExecutionException(errorMessage);
+
+            if (OnPythonError != null)
+            {
+                OnPythonError(errorMessage);
+            }
         }
 
         /// <summary>
