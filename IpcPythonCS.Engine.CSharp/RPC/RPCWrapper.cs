@@ -21,15 +21,6 @@ namespace IpcPythonCS.Engine.CSharp.RPC
             _communicator = communicator;
         }
 
-        /*public T CallFunction<T>(params object[] args)
-        {
-            object rtn;
-
-            rtn = CallFunction(args);
-
-            return (T)rtn;
-        }*/
-
         protected T CallPythonFunction<T>(params object[] args)
         {
             StackTrace stackTrace = new StackTrace();
@@ -37,7 +28,7 @@ namespace IpcPythonCS.Engine.CSharp.RPC
 
             string methodName;
             ParameterInfo[] parameters;
-            string functionDesc, functionRtn;
+            string functionDesc;
 
             methodName = stackFrames[1].GetMethod().Name;
             parameters = stackFrames[1].GetMethod().GetParameters();
@@ -59,10 +50,6 @@ namespace IpcPythonCS.Engine.CSharp.RPC
             string functionDesc;
 
             functionDesc = FunctionToXML(methodName, args);
-
-            // Send function description and wait for return value
-            //_pipe.Write(functionDesc);
-            //functionRtn = _pipe.Read();
 
             return functionDesc;
         }

@@ -26,6 +26,9 @@ namespace IPCPythonCS.Test.Engine.CSharp
 
             Assert.AreEqual(1 + 2, calculator.Addition(1, 2));
             Assert.AreEqual(1 - 2, calculator.Subtraction(1, 2));
+
+            client.Close();
+            python.Close();
         }
     }
 }

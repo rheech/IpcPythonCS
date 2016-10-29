@@ -8,7 +8,6 @@ namespace IpcPythonCS.Engine.CSharp.Communication
 {
     public interface ICommunicator
     {
-        //void Open();
         void Write(string message);
         string Read();
         void Close();

@@ -55,7 +55,8 @@ namespace IpcPythonCS.Engine.CSharp.Communication.Pipe
         {
             if (_pipeClient != null)
             {
-                return (_pipeClient.CanRead && _pipeClient.CanWrite);
+                return (_pipeClient.CanRead && _pipeClient.CanWrite &&
+                        _sw.BaseStream != null);
             }
 
             return false;

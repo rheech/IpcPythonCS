@@ -6,6 +6,8 @@ server = PipeServer()
 server.WaitForConnection("calculator")
 calc = PyCalculator(server)
 
+#print("hello")
+
 try:
     while(True):
         calc.ProcessFunctionCall()

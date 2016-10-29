@@ -2,6 +2,7 @@
 using IpcPythonCS.Engine.CSharp.Communication;
 using IpcPythonCS.Engine.CSharp.Communication.Pipe;
 using IpcPythonCS.Engine.CSharp.Example;
+using IpcPythonCS.Engine.Tool;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -44,6 +45,7 @@ namespace IpcPythonCS.UI
 
             lblFuncCallResult.Text = String.Format("Processing time: {0} ms", sw.ElapsedMilliseconds);
             client.Close();
+            python.Close();
         }
 
         private void btnSubtraction_Click(object sender, EventArgs e)
@@ -69,11 +71,11 @@ namespace IpcPythonCS.UI
             lblFuncCallResult.Text = String.Format("Processing time: {0} ms", sw.ElapsedMilliseconds);
 
             client.Close();
+            python.Close();
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-
         }
     }
 }
