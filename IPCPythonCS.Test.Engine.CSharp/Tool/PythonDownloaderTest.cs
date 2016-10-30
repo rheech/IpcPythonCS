@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using IpcPythonCS.Engine.Tool;
 
-namespace IPCPythonCS.Test.Engine.CSharp
+namespace IPCPythonCS.Test.Engine.CSharp.Tool
 {
     [TestClass]
     public class PythonDownloaderTest
@@ -20,7 +20,7 @@ namespace IPCPythonCS.Test.Engine.CSharp
 
             txt = System.IO.File.ReadAllText("test.txt");
 
-            Assert.AreEqual("test", txt);
+            Assert.AreEqual("test", txt, "Unable to download and extract the specified file from url.");
         }
     }
 }

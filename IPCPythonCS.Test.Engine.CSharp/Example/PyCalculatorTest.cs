@@ -4,7 +4,7 @@ using IpcPythonCS.Engine.CSharp.Example;
 using IpcPythonCS.Engine.CSharp.Communication.Pipe;
 using IpcPythonCS.Engine.CSharp;
 
-namespace IPCPythonCS.Test.Engine.CSharp
+namespace IPCPythonCS.Test.Engine.CSharp.Example
 {
     [TestClass]
     public class PyCalculatorTest

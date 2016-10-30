@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using IpcPythonCS.Engine.CSharp.Communication.Pipe;
 using System.Threading;
 
-namespace IPCPythonCS.Test.Engine.CSharp
+namespace IPCPythonCS.Test.Engine.CSharp.Communication
 {
     [TestClass]
     public class PipeTest
