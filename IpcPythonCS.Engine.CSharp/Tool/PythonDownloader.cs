@@ -16,7 +16,16 @@ namespace IpcPythonCS.Engine.Tool
 
         public PythonDownloader()
         {
-            DownloadZip(DEFAULT_PYTHON_URL);
+        }
+
+        public void DownloadPython()
+        {
+            DownloadPython(DEFAULT_PYTHON_URL);
+        }
+
+        public void DownloadPython(string url)
+        {
+            DownloadZip(url);
         }
 
         private void DownloadZip(string url)
@@ -27,12 +36,27 @@ namespace IpcPythonCS.Engine.Tool
             uri = new Uri(url);
             file = new FileInfo(uri.LocalPath);
 
+            if (file.Exists)
+            {
+                file.Delete();
+            }
+
             using (WebClient client = new WebClient())
             {
                 client.DownloadFile(uri, file.Name);
             }
 
-            ZipFile.ExtractToDirectory(file.Name, ".\\");
+            // overwrite zip
+            StreamReader sr = new StreamReader(file.Name);
+            ZipArchive z = new ZipArchive(sr.BaseStream);
+            DirectoryInfo dir = new DirectoryInfo(".\\");
+
+            foreach (ZipArchiveEntry e in z.Entries)
+            {
+                e.ExtractToFile(Path.Combine(dir.FullName, e.Name), true);
+            }
+
+            //ZipFile.ExtractToDirectory(file.Name, ".\\");
         }
     }
 }

@@ -102,12 +102,12 @@ namespace IpcPythonCS.Engine.CSharp
 
         public void PythonErrorMessage(string errorMessage)
         {
-            throw new PythonExecutionException(errorMessage);
-
             if (OnPythonError != null)
             {
                 OnPythonError(errorMessage);
             }
+
+            throw new PythonExecutionException(errorMessage);
         }
 
         /// <summary>

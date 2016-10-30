@@ -54,6 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PythonExecutorTest.cs" />
     <Compile Include="PyCalculatorTest.cs" />
+    <Compile Include="PythonDownloaderTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IpcPythonCS.Engine.CSharp\IpcPythonCS.Engine.CSharp.csproj">
