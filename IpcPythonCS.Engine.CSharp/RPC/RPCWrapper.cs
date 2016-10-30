@@ -94,6 +94,10 @@ namespace IpcPythonCS.Engine.CSharp.RPC
             {
                 rtnVal = Convert.ToDouble(value);
             }
+            else if (typeof(T) == typeof(string))
+            {
+                rtnVal = value;
+            }
             else
             {
                 throw new Exception("Undefined type.");

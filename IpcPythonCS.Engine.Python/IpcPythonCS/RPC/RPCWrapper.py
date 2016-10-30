@@ -1,6 +1,5 @@
 import xml.etree.ElementTree as ET
 
-
 class RPCWrapper:
     _communicator = None
 
@@ -32,6 +31,8 @@ class RPCWrapper:
             if (child.tag == "arg"): # parse argument
                 if (child.attrib["type"] == "int" or child.attrib["type"] == "System.Int32"): # if type is int
                     args.append(int(child.text))
+                elif (child.attrib["type"] == "string" or child.attrib["type"] == "System.String"): # if type is int
+                    args.append(str(child.text))
 
         return self.__callByFuncName(funcName, *args)
 

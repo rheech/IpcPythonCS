@@ -11,7 +11,7 @@ namespace IPCPythonCS.Test.Engine.CSharp
         public void RunPythonTest()
         {
             PythonExecutor executor;
-            executor = new PythonExecutor();
+            executor = new PythonExecutor(PythonExecutor.DEFAULT_PYTHON_PATH, ".\\");
 
             System.IO.File.WriteAllText("test.py", "print(\"hello\")");
 
@@ -24,7 +24,7 @@ namespace IPCPythonCS.Test.Engine.CSharp
         {
             PythonExecutor executor;
             string rtn;
-            executor = new PythonExecutor();
+            executor = new PythonExecutor(PythonExecutor.DEFAULT_PYTHON_PATH, ".\\");
 
             System.IO.File.WriteAllText("test.py", "print(\"hello\")");
 

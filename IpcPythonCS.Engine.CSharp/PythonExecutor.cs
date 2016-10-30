@@ -16,8 +16,8 @@ namespace IpcPythonCS.Engine.CSharp
     /// </summary>
     public class PythonExecutor
     {
-        private const string DEFAULT_PYTHON_PATH = @"C:\Program Files\Python35\Python.exe";
-        private const string DEFAULT_SCRIPT_PATH = @"..\..\..\IpcPythonCS.Engine.Python";
+        public const string DEFAULT_PYTHON_PATH = @"C:\Program Files\Python35\Python.exe";
+        public const string DEFAULT_SCRIPT_PATH = @"..\..\..\IpcPythonCS.Engine.Python";
         private FileInfo _pythonInterpreter;
         private DirectoryInfo _scriptPath;
         private Thread _thread = null;
@@ -90,7 +90,14 @@ namespace IpcPythonCS.Engine.CSharp
                 OnPythonClosed(_sbOutput.ToString());
             }
 
-            return _sbOutput.ToString();
+            output = _sbOutput.ToString();
+
+            if (output.Length > 2)
+            {
+                output = output.Substring(0, output.Length - 2);
+            }
+
+            return output;
         }
 
         public void PythonErrorMessage(string errorMessage)

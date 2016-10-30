@@ -33,8 +33,16 @@ namespace IpcPythonCS.UI
 
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
-            calculator.Communicator.Close();
-            python.Close();
+            if (calculator != null)
+            {
+                calculator.Communicator.Close();
+            }
+
+
+            if (python != null)
+            {
+                python.Close();
+            }
         }
 
         private void runPython()

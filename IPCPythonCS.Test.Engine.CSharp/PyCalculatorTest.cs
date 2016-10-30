@@ -17,7 +17,7 @@ namespace IPCPythonCS.Test.Engine.CSharp
             PipeClient client;
 
             python = new PythonExecutor();
-            python.RunScript("Python\\main.py");
+            python.RunScript("main.py");
 
             client = new PipeClient();
             client.Connect("calculator");
