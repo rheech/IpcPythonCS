@@ -9,7 +9,7 @@ namespace IPCPythonCS.Test.Engine.CSharp.Example
     [TestClass]
     public class PyCalculatorTest
     {
-        [TestMethod]
+        /*[TestMethod]
         public void CalculationTest()
         {
             PyCalculator calculator;
@@ -29,6 +29,6 @@ namespace IPCPythonCS.Test.Engine.CSharp.Example
 
             client.Close();
             python.Close();
-        }
+        }*/
     }
 }

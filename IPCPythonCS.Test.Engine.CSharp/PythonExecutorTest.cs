@@ -7,7 +7,7 @@ namespace IPCPythonCS.Test.Engine.CSharp
     [TestClass]
     public class PythonExecutorTest
     {
-        [TestMethod]
+        /*[TestMethod]
         public void RunPythonTest()
         {
             PythonExecutor executor;
@@ -32,6 +32,6 @@ namespace IPCPythonCS.Test.Engine.CSharp
             executor.Close();
 
             Assert.AreEqual("hello", rtn);
-        }
+        }*/
     }
 }
