@@ -33,6 +33,12 @@ namespace IpcPythonCS.Engine.CSharp
             _scriptPath = new DirectoryInfo(DEFAULT_SCRIPT_PATH);
         }
 
+        public PythonExecutor(string pythonPath)
+        {
+            _pythonInterpreter = new FileInfo(pythonPath);
+            _scriptPath = new DirectoryInfo(DEFAULT_SCRIPT_PATH);
+        }
+
         public PythonExecutor(string pythonPath, string scriptPath)
         {
             _pythonInterpreter = new FileInfo(pythonPath);
@@ -98,6 +104,14 @@ namespace IpcPythonCS.Engine.CSharp
             }
 
             return output;
+        }
+
+        public bool CanRun
+        {
+            get
+            {
+                return _pythonInterpreter.Exists;
+            }
         }
 
         public void PythonErrorMessage(string errorMessage)

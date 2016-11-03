@@ -136,7 +136,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IPC Tester";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
-            this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numSecond)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numFirst)).EndInit();
             this.ResumeLayout(false);

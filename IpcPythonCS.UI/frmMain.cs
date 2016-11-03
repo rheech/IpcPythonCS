@@ -24,10 +24,6 @@ namespace IpcPythonCS.UI
         public frmMain()
         {
             InitializeComponent();
-        }
-
-        private void frmMain_Load(object sender, EventArgs e)
-        {
             runPython();
         }
 
@@ -50,6 +46,27 @@ namespace IpcPythonCS.UI
             PipeClient client;
 
             python = new PythonExecutor();
+
+            if (!python.CanRun)
+            {
+                if (System.IO.File.Exists("Python35\\python.exe"))
+                {
+                    python = new PythonExecutor("Python35\\python.exe");
+                }
+                else if (MessageBox.Show("Unable to find python.\nDo you want to download an example interpreter from cheonghyun.com?", "IpcPythonCS", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                        == System.Windows.Forms.DialogResult.Yes)
+                {
+                    PythonDownloader down = new PythonDownloader();
+                    down.DownloadAndUnzip();
+
+                    python = new PythonExecutor(down.PythonInterpreter.FullName);
+                }
+                else
+                {
+                    MessageBox.Show("This application cannot run without Python.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+
             python.RunScript("main.py");
 
             client = new PipeClient();

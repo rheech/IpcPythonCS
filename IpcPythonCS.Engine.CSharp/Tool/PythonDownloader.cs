@@ -12,23 +12,43 @@ namespace IpcPythonCS.Engine.Tool
     public class PythonDownloader
     {
         private const string DEFAULT_PYTHON_URL = "https://www.cheonghyun.com/download/Python35.zip";
-        private const string DEFAULT_ZIP_FILE = "Python35.zip";
+        private const string DEFAULT_PYTHON_LOCAL_PATH = "C:\\Program Files\\Python35";
+
+        private DirectoryInfo _pythonDirectory;
+        private FileInfo _pythonInterpreter;
 
         public PythonDownloader()
         {
+            _pythonDirectory = new DirectoryInfo(DEFAULT_PYTHON_LOCAL_PATH);
         }
 
-        public void DownloadPython()
+        public DirectoryInfo PythonDirectory
         {
-            DownloadPython(DEFAULT_PYTHON_URL);
+            get
+            {
+                return _pythonDirectory;
+            }
         }
 
-        public void DownloadPython(string url)
+        public FileInfo PythonInterpreter
         {
-            DownloadZip(url);
+            get
+            {
+                return _pythonInterpreter;
+            }
         }
 
-        private void DownloadZip(string url)
+        public void DownloadAndUnzip()
+        {
+            DownloadAndUnzip(DEFAULT_PYTHON_URL);
+        }
+
+        public void DownloadAndUnzip(string url)
+        {
+            _downloadAndUnzip(url);
+        }
+
+        private void _downloadAndUnzip(string url)
         {
             Uri uri;
             FileInfo file;
@@ -51,12 +71,21 @@ namespace IpcPythonCS.Engine.Tool
             ZipArchive z = new ZipArchive(sr.BaseStream);
             DirectoryInfo dir = new DirectoryInfo(".\\");
 
-            foreach (ZipArchiveEntry e in z.Entries)
+            // Set python directory
+            dir = new DirectoryInfo(Path.Combine(dir.FullName, Path.GetFileNameWithoutExtension(file.Name)));
+            _pythonInterpreter = new FileInfo(Path.Combine(dir.FullName, "python.exe"));
+            
+            // Remove previously existed directory
+            if (System.IO.Directory.Exists(dir.FullName))
             {
-                e.ExtractToFile(Path.Combine(dir.FullName, e.Name), true);
+                System.IO.Directory.Delete(dir.FullName, true);
             }
 
-            //ZipFile.ExtractToDirectory(file.Name, ".\\");
+            System.IO.Directory.CreateDirectory(dir.FullName);
+
+            _pythonDirectory = dir;
+
+            ZipFile.ExtractToDirectory(file.Name, dir.FullName);
         }
     }
 }

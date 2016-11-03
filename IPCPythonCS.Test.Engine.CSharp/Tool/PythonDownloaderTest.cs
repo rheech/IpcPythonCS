@@ -16,9 +16,9 @@ namespace IPCPythonCS.Test.Engine.CSharp.Tool
             PythonDownloader downloder = new PythonDownloader();
             string txt;
 
-            downloder.DownloadPython("https://www.cheonghyun.com/download/test.zip");
+            downloder.DownloadAndUnzip("https://www.cheonghyun.com/download/test.zip");
 
-            txt = System.IO.File.ReadAllText("test.txt");
+            txt = System.IO.File.ReadAllText("test\\test.txt");
 
             Assert.AreEqual("test", txt, "Unable to download and extract the specified file from url.");
         }
