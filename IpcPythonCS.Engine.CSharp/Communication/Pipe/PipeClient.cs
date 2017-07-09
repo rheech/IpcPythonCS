@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IpcPythonCS.Engine.CSharp.Communication.Pipe
 {
-    public class PipeClient : ICommunicator
+    public class PipeClient : ICommunicator, IDisposable
     {
         NamedPipeClientStream _pipeClient;
         StreamWriter _sw;
@@ -16,6 +16,11 @@ namespace IpcPythonCS.Engine.CSharp.Communication.Pipe
 
         public PipeClient()
         {
+        }
+
+        ~PipeClient()
+        {
+            Close();
         }
 
         public void Connect(string pipeName)
@@ -76,6 +81,11 @@ namespace IpcPythonCS.Engine.CSharp.Communication.Pipe
             {
                 _pipeClient.Close();
             }
+        }
+
+        public void Dispose()
+        {
+            Close();
         }
     }
 }

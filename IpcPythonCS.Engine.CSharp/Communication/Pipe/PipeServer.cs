@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IpcPythonCS.Engine.CSharp.Communication.Pipe
 {
-    public class PipeServer : ICommunicator
+    public class PipeServer : ICommunicator, IDisposable
     {
         // http://social.technet.microsoft.com/wiki/contents/articles/18193.named-pipes-io-for-inter-process-communication.aspx
         // https://blogs.msdn.microsoft.com/user_ed/2013/08/03/c-guru-named-pipes-io-for-inter-process-communication/
@@ -18,6 +18,11 @@ namespace IpcPythonCS.Engine.CSharp.Communication.Pipe
 
         public PipeServer()
         {
+        }
+
+        ~PipeServer()
+        {
+            Close();
         }
 
         public void WaitForConnection(string pipeName)
@@ -75,6 +80,11 @@ namespace IpcPythonCS.Engine.CSharp.Communication.Pipe
             {
                 _pipeServer.Close();
             }
+        }
+
+        public void Dispose()
+        {
+            Close();
         }
     }
 }
