@@ -1,5 +1,6 @@
 import win32file
 import win32pipe
+import win32api
 
 from IpcPythonCS.Communication.ICommunicator import ICommunicator
 
@@ -29,4 +30,5 @@ class PipeServer(ICommunicator):
         return data[1]
 
     def Close(self):
+        win32api.CloseHandle(self._pipeHandle)
         return
